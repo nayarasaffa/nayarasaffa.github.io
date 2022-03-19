@@ -41,6 +41,8 @@
 						<a href="#experience" class="nav-item nav-link">Education</a>
 						<a href="#review" class="nav-item nav-link">Perspective Career</a>
                         <a href="#about" class="nav-item nav-link">Skills</a>
+                        <a href="#tabel" class="nav-item nav-link">Web Scraping I</a>
+                        <a href="#price" class="nav-item nav-link">Web Scraping II</a>
                     </div>
                 </div>
             </div>
@@ -239,14 +241,14 @@
                         <div class="testimonial-text">
                             <h3>Perspective Career</h3>
 							<p>
-                                After graduating from the Bandung State Polytechnis's Department of Computer and Indormatics Engineering, I hope I can become a reliable data analyst. So, I've to improve my skills and experiences to become a reliable data analyst.
+                                After graduating from the Bandung State Polytechnis's Department of Computer and Informatics Engineering, I hope I can become a reliable data analyst. So, I've to improve my skills and experiences to become a reliable data analyst.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Testimonial End -->
+<!-- Testimonial End -->
 
         <!-- About Start -->
         <div class="about wow fadeInUp" data-wow-delay="0.1s" id="about">
@@ -318,6 +320,88 @@
         </div>
         <!-- Banner End -->
 
+        <!-- Price Start -->
+        <div class="tabel" id="tabel">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Web Scraping I</p>
+                    <h2>Headline Republika Online</h2>
+                </div>
+                <head>
+                    <link rel="stylesheet" href="tablestyles.css">
+                    <title></title>
+                    <!--Import library jquery-->
+                    <script
+                      src="https://code.jquery.com/jquery-3.6.0.js"
+                      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                      crossorigin="anonymous"></script>
+                </head>
+                <body>
+                    <h1></h1>
+                    <div id="headline_json"></div>
+                </body>
+                <script type="text/javascript">
+                    $(function(){
+                        $.get('./data.json',function(obj){
+                            var str = "<table border=1>";
+                            str +="<tr><td>No</td><td class='tables'>Judul Headline</td><td class='tables'>Kategori</td><td class='tables'>Waktu Publish</td><td class='tables'>Waktu Scrapping</td></tr>";
+                            $.each(obj,function(n,data){
+                                str +="<tr><td>" + (n+1) + "</td>";
+                                str +="<td>" + data.Judul + "</td>";
+                                str +="<td class='tables'>" + data.Kategori + "</td>";
+                                str +="<td class='tables'>" + data.Waktu_publish + "</td>";
+                                str +="<td class='tables'>" + data.Waktu_scrapping + "</td></tr>";
+                            });
+                            str +="</table>";
+                            $('#headline_json').html(str);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- Price End -->
+
+        <!-- Price Start -->
+        <div class="price" id="price">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Web Scraping II</p>
+                    <h2>Spotify Chart Top 200</h2>
+                </div>
+                <head>
+                    <link rel="stylesheet" href="tablestyles.css">
+                    <title></title>
+                    <!--Import library jquery-->
+                    <script
+                      src="https://code.jquery.com/jquery-3.6.0.js"
+                      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                      crossorigin="anonymous"></script>
+                </head>
+                <body>
+                    <h1></h1>
+                    <div id="hasilscraping_json"></div>
+                </body>
+                <script type="text/javascript">
+                    $(function(){
+                        $.get('./hasilscraping.json',function(obj){
+                            var str = "<table border=1>";
+                            str +="<tr><td>Chart</td><td class='tables'>Cover</td><td class='tables'>Judul Lagu</td><td class='tables'>Penyanyi</td><td class='Streams'>Jumlah Streaming</td><td class='tables'>Waktu Scraping</td></tr>";
+                            $.each(obj,function(n,hasilscraping){
+                                str +="<tr><td>" + (n+1) + "</td>";
+                                str +="<td>" + "<img src=" + hasilscraping.Image + ">" +"</td>";    
+                                str +="<td>" + hasilscraping.Lagu + "</td>";
+                                str +="<td class='tables'>" + hasilscraping.Penyanyi + "</td>";
+                                str +="<td class='tables'>" + hasilscraping.Jumlah_Streaming + "</td>";
+                                str +="<td class='tables'>" + hasilscraping.Waktu_Scraping + "</td></tr>";
+                            });
+                            str +="</table>";
+                            $('#hasilscraping_json').html(str);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- Price End -->
         
         <!-- Footer Start -->
         <div class="footer wow fadeIn" data-wow-delay="0.3s">
